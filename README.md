@@ -57,7 +57,12 @@ eStickFix/
 pip install pyyaml watchdog pandas pymongo
 
 
-3. Customize configuration files (`config1.yaml`, `config2.yaml`, etc.) in the `config` directory with your specific dataset, table, and date configurations.
+3. Customize configuration files (`config1.yaml`, `config2.yaml`, etc.) in the `config` directory with your specific dataset, table, and date configurations. Example:
+
+    date_now: "2023-08-25"
+    dataset: "my_dataset1"
+    tablename: "my_table1"
+
 4. Fill in transformation and quality check scripts for each dataset/table in the `transformation` and `qa` directories.
 5. Run the ETL process using:
 
