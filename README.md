@@ -54,8 +54,7 @@ eStickFix/
 1. Clone this repository to your local machine.
 2. Install the required Python libraries using `pip`:
 
-pip install pyyaml watchdog pandas pymongo
-
+pip install pyyaml watchdog pandas pymongo paramiko 
 
 3. Customize configuration files (`config1.yaml`, `config2.yaml`, etc.) in the `config` directory with your specific dataset, table, and date configurations. Example:
 
