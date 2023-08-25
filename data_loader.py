@@ -59,7 +59,7 @@ class SourceLoader:
         print(f"Data loaded from MySQL and saved to '{local_path}'")
 
 def main():
-    with open("sources.yaml", "r") as sources_file:
+    with open("config/sources.yaml", "r") as sources_file:
         sources_config = yaml.safe_load(sources_file)['sources']
     
     loader = SourceLoader(sources_config)
