@@ -61,6 +61,32 @@ pip install pyyaml watchdog pandas pymongo paramiko
     date_now: "2023-08-25"
     dataset: "my_dataset1"
     tablename: "my_table1"
+   
+3.1 Primero, creemos el archivo config/sources.yaml en el mismo directorio config de tu script:
+
+       config/sources.yaml:
+
+   
+sources:
+  - type: ftp
+    path: /remote/path/to/ftp/directory
+    protocol: sftp
+    username: your_ftp_username
+    password: your_ftp_password
+    dataset: dataset1
+    table_name: table1
+
+  - type: mysql
+    host: localhost
+    port: 3306
+    username: your_mysql_username
+    password: your_mysql_password
+    database: your_database_name
+    table: your_table_name
+    query: "SELECT * FROM your_table_name"
+    dataset: dataset2
+    table_name: table2
+
 
 4. Fill in transformation and quality check scripts for each dataset/table in the `transformation` and `qa` directories.
 5. Run the ETL process using:
