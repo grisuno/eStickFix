@@ -1,0 +1,19 @@
+sources:
+  - type: ftp
+    path: /remote/path/to/ftp/directory
+    protocol: sftp
+    username: your_ftp_username
+    password: your_ftp_password
+    dataset: dataset1
+    table_name: table1
+
+  - type: mysql
+    host: localhost
+    port: 3306
+    username: your_mysql_username
+    password: your_mysql_password
+    database: your_database_name
+    table: your_table_name
+    query: "SELECT * FROM your_table_name"
+    dataset: dataset2
+    table_name: table2
