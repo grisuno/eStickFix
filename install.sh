@@ -32,3 +32,4 @@ pip install pyyaml
 pip install watchdog
 pip install pandas
 pip install pymongo
+pip install paramiko
