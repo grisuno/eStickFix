@@ -3,7 +3,6 @@ import yaml
 import pandas as pd
 import pymongo
 import logging
-import unittest
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from datetime import datetime
