@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Explore Data</title>
+</head>
+<body>
+    <h1>Explore Data</h1>
+    <form method="GET" action="{{ url_for('explore') }}">
+        <input type="text" name="query" placeholder="Enter your query">
+        <input type="submit" value="Search">
+    </form>
+    <h2>Search results for: {{ query }}</h2>
+    <pre>{{ result }}</pre>
+</body>
+</html>
