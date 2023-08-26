@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Navigation</title>
+</head>
+<body>
+    <h1>Available Datasets</h1>
+    <ul>
+        {% for dataset in datasets %}
+            <li><a href="{{ url_for('dataset_details', dataset=dataset, table_name='table1') }}">{{ dataset }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
