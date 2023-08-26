@@ -4,6 +4,13 @@
     <title>Data Navigation</title>
 </head>
 <body>
+    <h1>Welcome, {{ current_user.username }}!</h1>
+    <ul>
+        <li><a href="{{ url_for('create_config') }}">Create Configuration</a></li>
+        <li><a href="{{ url_for('etl_status') }}">Check ETL Status</a></li>
+        <li><a href="{{ url_for('data_navigation') }}">Navigate Data</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    </ul>
     <h1>Available Datasets</h1>
     <ul>
         {% for dataset in datasets %}
