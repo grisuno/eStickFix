@@ -53,17 +53,4 @@ class SourceLoader:
         query = source['query']
         df = pd.read_sql(query, connection)
         
-        local_path = f"etl/{source['dataset']}/{source['table_name']}/{source['dataset']}_{source['table_name']}_{datetime.now().strftime('%Y%m%d')}.parquet"
-        df.to_parquet(local_path)
-        
-        print(f"Data loaded from MySQL and saved to '{local_path}'")
-
-def main():
-    with open("config/sources.yaml", "r") as sources_file:
-        sources_config = yaml.safe_load(sources_file)['sources']
-    
-    loader = SourceLoader(sources_config)
-    loader.load_sources()
-
-if __name__ == "__main__":
-    main()
+        local_path = f"etl/{source['dataset']}/{source['table_name']}/{source
