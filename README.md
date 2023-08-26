@@ -16,39 +16,42 @@ eStickFix is a data processing and quality assurance framework for automating ET
 
 The project is organized as follows:
 
-
+[code]
 eStickFix/
+|-- app/
+|   |-- templates/
+|   |   |-- index.html
+|   |   |-- etl_status.html
+|   |-- app.py
 |-- config/
-| |-- config1.yaml
-| |-- config2.yaml
-|-- etl/
-| |-- dataset1/
-| | |-- table1/
-| | | |-- ...
-| | |-- table2/
-| | |-- ...
-| |-- dataset2/
-| | |-- ...
-|-- transformation/
-| |-- dataset1/
-| | |-- table1/
-| | | |-- ...
-| | |-- table2/
-| | |-- ...
-| |-- dataset2/
-| | |-- ...
-|-- qa/
-| |-- dataset1/
-| | |-- table1/
-| | | |-- ...
-| | |-- table2/
-| | |-- ...
-| |-- dataset2/
-| | |-- ...
-|-- log/
+|   |-- config1.yaml
+|   |-- config2.yaml
 |-- data_navigation.py
 |-- etl.py
-
+|-- data_loader.py
+|-- sources.yaml
+|-- log/
+|-- transformations/
+|   |-- dataset1/
+|   |   |-- table1/
+|   |   |   |-- ...
+|   |   |-- table2/
+|   |       |-- ...
+|   |-- dataset2/
+|   |   |-- ...
+|-- qa/
+|   |-- dataset1/
+|   |   |-- table1/
+|   |   |   |-- ...
+|   |   |-- table2/
+|   |       |-- ...
+|   |-- dataset2/
+|   |   |-- ...
+|-- static/  # Static assets for the web interface (CSS, JS, etc.)
+|-- templates/  # HTML templates for the web interface
+|-- venv/  # Virtual environment
+|-- README.md
+[/code]
 ## Getting Started
 
 1. Clone this repository to your local machine.
