@@ -1,0 +1,23 @@
+{
+  "tool": "readmenator",
+  "generated_at": "2026-09-18T06:47:37Z",
+  "project_root": "/tmp/push_eStickFix_20260918_033829",
+  "files": 10,
+  "symbols": 41,
+  "imports": 175,
+  "resolved_imports": 7,
+  "security_findings": 0,
+  "languages": {
+    "py": 9,
+    "sh": 1
+  },
+  "entrypoints": [],
+  "start_here": "INDEX.md",
+  "workflow": [
+    "ls *.md readmenator-*/  # orient: docs first, ignore build noise",
+    "grep -n '<keyword>' INDEX.md",
+    "cat KB_<subsystem>.md",
+    "grep -n '<file>' ARCHITECTURE.md SYMBOLS.md"
+  ],
+  "regenerate": "readmenator . --rebuild"
+}
