@@ -12,10 +12,37 @@
 
 ## External Imports
 
-- `app_unit_test.py` -> flask, flask_login, unittest, unittest.mock
-- `data_loader_unit_test.py` -> unittest, unittest.mock
-- `data_navigation.py` -> pymongo
-- `etl.py` -> datetime, logging, os, pandas, pymongo, watchdog.events, watchdog.observers, yaml
-- `etl_unit_test.py` -> unittest, your_etl_script
-- `orquestador.py` -> datetime, ftplib, logging, os, pandas, paramiko, pymysql, yaml
-- `orquestador_unit_test.py` -> unittest, unittest.mock
+- `app_unit_test.py` -> `app`
+- `app_unit_test.py` -> `flask`
+- `app_unit_test.py` -> `flask_login`
+- `app_unit_test.py` -> `unittest`
+- `app_unit_test.py` -> `unittest.mock`
+- `data_loader_unit_test.py` -> `data_loader`
+- `data_loader_unit_test.py` -> `unittest`
+- `data_loader_unit_test.py` -> `unittest.mock`
+- `data_navigation.py` -> `pymongo`
+- `etl.py` -> `data_navigation`
+- `etl.py` -> `datetime`
+- `etl.py` -> `logging`
+- `etl.py` -> `os`
+- `etl.py` -> `pandas`
+- `etl.py` -> `pymongo`
+- `etl.py` -> `watchdog.events`
+- `etl.py` -> `watchdog.observers`
+- `etl.py` -> `yaml`
+- `etl_unit_test.py` -> `unittest`
+- `etl_unit_test.py` -> `your_etl_script`
+- `orquestador.py` -> `data_loader`
+- `orquestador.py` -> `data_navigation`
+- `orquestador.py` -> `datetime`
+- `orquestador.py` -> `etl`
+- `orquestador.py` -> `ftplib`
+- `orquestador.py` -> `logging`
+- `orquestador.py` -> `os`
+- `orquestador.py` -> `pandas`
+- `orquestador.py` -> `paramiko`
+- `orquestador.py` -> `pymysql`
+- `orquestador.py` -> `yaml`
+- `orquestador_unit_test.py` -> `orquestador`
+- `orquestador_unit_test.py` -> `unittest`
+- `orquestador_unit_test.py` -> `unittest.mock`

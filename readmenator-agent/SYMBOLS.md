@@ -6,7 +6,7 @@
 | `test_create_config` | method | `app_unit_test.py:23` | `def test_create_config(self, mock_db, mock_User, mock_UserController, mock_url_for, mock_redirect)` |
 | `test_etl_status` | method | `app_unit_test.py:52` | `def test_etl_status(self, mock_current_user, mock_ProcessController, mock_render_template)` |
 | `test_index` | method | `app_unit_test.py:9` | `def test_index(self, mock_render_template)` |
-| `test_start_etl` | method | `app_unit_test.py:40` | `def test_start_etl(self, mock_data_navigator, mock_ETLProcessor, mock_DataQualityChecker, mock_Transformer...` |
+| `test_start_etl` | method | `app_unit_test.py:40` | `def test_start_etl(self, mock_data_navigator, mock_ETLProcessor, mock_DataQualityChecker, mock_Transformer, mock_Config,` |
 | `TestSourceLoader` | class | `data_loader_unit_test.py:5` | `class TestSourceLoader(TestCase)` |
 | `setUp` | method | `data_loader_unit_test.py:6` | `def setUp(self)` |
 | `test_load_ftp` | method | `data_loader_unit_test.py:33` | `def test_load_ftp(self, mock_print)` |

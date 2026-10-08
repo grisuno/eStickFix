@@ -12,7 +12,7 @@
   - `TestApp` (class, line 7) `class TestApp(TestCase)`
   - `test_index` (method, line 9) `def test_index(self, mock_render_template)`
   - `test_create_config` (method, line 23) `def test_create_config(self, mock_db, mock_User, mock_UserController, mock_url_for, mock_redirect)`
-  - `test_start_etl` (method, line 40) `def test_start_etl(self, mock_data_navigator, mock_ETLProcessor, mock_DataQualityChecker, mock_Transformer...`
+  - `test_start_etl` (method, line 40) `def test_start_etl(self, mock_data_navigator, mock_ETLProcessor, mock_DataQualityChecker, mock_Transformer, mock_Config, mock_ETLController, mock_url_for, mock_redirect, mock_flash)`
   - `test_etl_status` (method, line 52) `def test_etl_status(self, mock_current_user, mock_ProcessController, mock_render_template)`
 - Depends on: `app.py`
 

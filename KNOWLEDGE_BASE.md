@@ -12,7 +12,7 @@
 **Total Files Parsed:** 10 | **Total Symbols Extracted:** 41 | **Total Imports:** 34
  | **Resolved Imports:** 7
 
-<!-- ranking_model: v1.0 | weights: {ppr:0.45,auth:0.2,test:0.15,doc:0.1,fresh:0.1} | alpha:0.85 | commit:1e0fd0b | date:2026-07-18 -->
+<!-- ranking_model: v1.0 | weights: {ppr:0.45,auth:0.2,test:0.15,doc:0.1,fresh:0.1} | alpha:0.85 | commit:05a4468 | date:2026-07-18 -->
 
 
 ## Table of Contents
@@ -22,11 +22,11 @@
 3. [Ranked Context](#ranked-context)
 4. [God Nodes](#god-nodes)
 5. [Community Analysis](#community-analysis)
-6. [Suggested Questions](#suggested-questions)
-7. [Hotspot Analysis](#hotspot-analysis)
-8. [Change Impact Analysis](#change-impact-analysis)
-9. [Suggested Linting Rules](#suggested-linting-rules)
-10. [Concept Graph](#concept-graph)
+6. [Surprising Connections](#surprising-connections)
+7. [Suggested Questions](#suggested-questions)
+8. [Hotspot Analysis](#hotspot-analysis)
+9. [Change Impact Analysis](#change-impact-analysis)
+10. [Suggested Linting Rules](#suggested-linting-rules)
 11. [Orphans](#orphans)
 12. [Query Recipes](#query-recipes)
 13. [Structural Knowledge Map](#structural-knowledge-map)
@@ -139,23 +139,38 @@ Most architecturally central files ranked by combined import/export degree and s
 
 Files grouped by import-based community detection. Cohesion measures how tightly connected each community is internally.
 
-### root: etl (Cohesion: 1.00)
-
-**6 files** in this community:
-
-- `data_loader.py` (py, 0 symbols)
-- `data_loader_unit_test.py` (py, 4 symbols)
-- `data_navigation.py` (py, 4 symbols)
-- `etl.py` (py, 18 symbols)
-- `orquestador.py` (py, 1 symbols)
-- `orquestador_unit_test.py` (py, 2 symbols)
-
-### root: app (Cohesion: 1.00)
+### root (Cohesion: 1.00)
 
 **2 files** in this community:
 
 - `app.py` (py, 0 symbols)
 - `app_unit_test.py` (py, 5 symbols)
+
+### root (Cohesion: 0.50)
+
+**2 files** in this community:
+
+- `data_loader.py` (py, 0 symbols)
+- `data_loader_unit_test.py` (py, 4 symbols)
+
+### root (Cohesion: 0.80)
+
+**4 files** in this community:
+
+- `data_navigation.py` (py, 4 symbols)
+- `etl.py` (py, 18 symbols)
+- `orquestador.py` (py, 1 symbols)
+- `orquestador_unit_test.py` (py, 2 symbols)
+
+---
+
+## Surprising Connections
+
+Files in different communities connected through 3+ indirect hops.
+
+- `data_loader_unit_test.py` <-> `data_navigation.py` (3 hops, across 2 communities)
+- `data_loader_unit_test.py` <-> `etl.py` (3 hops, across 2 communities)
+- `data_loader_unit_test.py` <-> `orquestador_unit_test.py` (3 hops, across 2 communities)
 
 ---
 
@@ -166,8 +181,8 @@ Auto-generated exploration prompts based on graph structure:
 - What does orquestador.py depend on, and what depends on it? (4 connections)
 - What does etl.py depend on, and what depends on it? (2 connections)
 - What does data_navigation.py depend on, and what depends on it? (2 connections)
-- How are the 6 files in 'root: etl' related to each other?
-- What is TestApp in app_unit_test.py and how is it used?
+- How are the 4 files in 'root' related to each other?
+- Why are data_loader_unit_test.py and data_navigation.py connected through 3 hops across 2 communities?
 
 ---
 
@@ -187,75 +202,6 @@ Files ranked by combined complexity (symbol count) and centrality (connection co
 | `orquestador_unit_test.py` | 0.111 | 0.267 | 0.204 | 2 | 4 |
 | `etl_unit_test.py` | 0.389 | 0.133 | 0.236 | 7 | 2 |
 | `install.sh` | 0.000 | 0.000 | 0.000 | 0 | 0 |
-
----
-
-## Concept Graph
-
-Semantic second-brain layer: nouns are concept nodes, verbs are edges. Each noun maps atomically to a file set (EXTRACTED); each verb aggregates structural imports, calls, and inherits into consumes, invokes, extends, depends_on, or bridges (INFERRED).
-
-**13 concepts, 27 relations.**
-
-| Concept | Files | Mentions |
-|---------|-------|----------|
-| `data` | 4 | 8 |
-| `unit` | 4 | 8 |
-| `etl` | 3 | 9 |
-| `app` | 2 | 5 |
-| `loader` | 2 | 5 |
-| `orquestador` | 2 | 4 |
-| `load` | 2 | 3 |
-| `set` | 2 | 3 |
-| `check` | 2 | 2 |
-| `config` | 2 | 2 |
-| `etlprocessor` | 2 | 2 |
-| `process` | 2 | 2 |
-| `quality` | 2 | 2 |
-
-### Verb Edges
-
-| Source | Verb | Target | Strength | Evidence |
-|--------|------|--------|----------|----------|
-| `orquestador` | `depends_on` | `data` | 1.00 | 3 |
-| `load` | `depends_on` | `data` | 0.67 | 2 |
-| `check` | `depends_on` | `data` | 0.33 | 1 |
-| `config` | `depends_on` | `app` | 0.33 | 1 |
-| `config` | `depends_on` | `data` | 0.33 | 1 |
-| `data` | `depends_on` | `loader` | 0.33 | 1 |
-| `etl` | `depends_on` | `app` | 0.33 | 1 |
-| `etl` | `depends_on` | `data` | 0.33 | 1 |
-| `etlprocessor` | `depends_on` | `data` | 0.33 | 1 |
-| `load` | `depends_on` | `loader` | 0.33 | 1 |
-| `loader` | `depends_on` | `data` | 0.33 | 1 |
-| `orquestador` | `depends_on` | `check` | 0.33 | 1 |
-| `orquestador` | `depends_on` | `config` | 0.33 | 1 |
-| `orquestador` | `depends_on` | `etl` | 0.33 | 1 |
-| `orquestador` | `depends_on` | `etlprocessor` | 0.33 | 1 |
-| `orquestador` | `depends_on` | `load` | 0.33 | 1 |
-| `orquestador` | `depends_on` | `loader` | 0.33 | 1 |
-| `orquestador` | `depends_on` | `process` | 0.33 | 1 |
-| `orquestador` | `depends_on` | `quality` | 0.33 | 1 |
-| `process` | `depends_on` | `data` | 0.33 | 1 |
-| `quality` | `depends_on` | `data` | 0.33 | 1 |
-| `set` | `depends_on` | `data` | 0.33 | 1 |
-| `set` | `depends_on` | `loader` | 0.33 | 1 |
-| `unit` | `depends_on` | `app` | 0.33 | 1 |
-| `unit` | `depends_on` | `data` | 0.33 | 1 |
-| `unit` | `depends_on` | `loader` | 0.33 | 1 |
-| `unit` | `depends_on` | `orquestador` | 0.33 | 1 |
-
-### Dialectic Prompts
-
-- Thesis: `check` centralizes 2 files; Antithesis: `etl` pulls 3 files with 2 shared (Jaccard 0.67); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `check` centralizes 2 files; Antithesis: `etlprocessor` pulls 2 files with 2 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `check` centralizes 2 files; Antithesis: `process` pulls 2 files with 2 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `check` centralizes 2 files; Antithesis: `quality` pulls 2 files with 2 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `config` centralizes 2 files; Antithesis: `etl` pulls 3 files with 2 shared (Jaccard 0.67); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `data` centralizes 4 files; Antithesis: `load` pulls 2 files with 2 shared (Jaccard 0.50); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?
-- Thesis: `data` centralizes 4 files; Antithesis: `loader` pulls 2 files with 2 shared (Jaccard 0.50); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?
-- Thesis: `etl` centralizes 3 files; Antithesis: `etlprocessor` pulls 2 files with 2 shared (Jaccard 0.67); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `etl` centralizes 3 files; Antithesis: `process` pulls 2 files with 2 shared (Jaccard 0.67); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `etl` centralizes 3 files; Antithesis: `quality` pulls 2 files with 2 shared (Jaccard 0.67); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
 
 ---
 
@@ -344,7 +290,7 @@ graph TD
     classDef cls fill:#2d2d2d,stroke:#4ec9b0,stroke-width:2px,color:#fff;
     classDef fn fill:#333,stroke:#dcdcaa,stroke-width:1px,color:#dcdcaa;
     classDef ext fill:#111,stroke:#666,stroke-dasharray:5 5,color:#aaa;
-    subgraph community_0 ["root: etl"]
+    subgraph community_2 ["root"]
     orquestador_py["orquestador.py (py)"]
     class orquestador_py mod;
     orquestador_py_main["main"]
@@ -368,9 +314,11 @@ graph TD
     class etl_py_ETLProcessor cls;
     etl_py --> etl_py_ETLProcessor
     end
-    subgraph community_1 ["root: app"]
+    subgraph community_0 ["root"]
     app_unit_test_py["app_unit_test.py (py)"]
     class app_unit_test_py mod;
+    end
+    subgraph community_1 ["root"]
     data_loader_unit_test_py["data_loader_unit_test.py (py)"]
     class data_loader_unit_test_py mod;
     orquestador_unit_test_py["orquestador_unit_test.py (py)"]
@@ -605,7 +553,7 @@ classDiagram
 Machine-readable Code Property Graph (CPG) in JSON-LD format. This block allows AI agents to parse the full structural graph without additional file reads. Compatible with GraphRAG pipelines.
 
 ```json
-{"@context": "https://schema.org", "analysis": {"communities": [{"cohesion": 1.0, "id": 0, "label": "root: etl", "size": 6}, {"cohesion": 1.0, "id": 1, "label": "root: app", "size": 2}], "god_nodes": [{"node_id": "orquestador.py", "score": 8.1}, {"node_id": "etl.py", "score": 5.8}, {"node_id": "data_navigation.py", "score": 4.4}, {"node_id": "data_loader.py", "score": 4.0}, {"node_id": "app_unit_test.py", "score": 2.5}, {"node_id": "data_loader_unit_test.py", "score": 2.4}, {"node_id": "orquestador_unit_test.py", "score": 2.2}, {"node_id": "app.py", "score": 2.0}, {"node_id": "etl_unit_test.py", "score": 0.7}, {"node_id": "install.sh", "score": 0.0}], "surprising_connections": []}, "edges": [{"confidence": "EXTRACTED", "relation": "imports", "source": "app_unit_test.py", "target": "unittest"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "app_unit_test.py", "target": "unittest.mock"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "app_unit_test.py", "target": "flask"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "app_unit_test.py", "target": "flask_login"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "app_unit_test.py", "target": "app"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "data_loader_unit_test.py", "target": "unittest"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "data_loader_unit_test.py", "target": "unittest.mock"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "data_loader_unit_test.py", "target": "data_loader"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "data_navigation.py", "target": "pymongo"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "os"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "yaml"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "pandas"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "pymongo"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "logging"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "watchdog.observers"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "watchdog.events"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "datetime"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "data_navigation"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl_unit_test.py", "target": "unittest"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl_unit_test.py", "target": "your_etl_script"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "os"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "yaml"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "pandas"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "paramiko"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "pymysql"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "logging"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "ftplib"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "datetime"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "data_navigation"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "etl"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "data_loader"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador_unit_test.py", "target": "unittest"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador_unit_test.py", "target": "unittest.mock"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador_unit_test.py", "target": "orquestador"}, {"confidence": "EXTRACTED", "relation": "resolved_imports", "source": "app_unit_test.py", "target": "app.py"}, {"confidence": "EXTRACTED", "relation": "resolved_imports", "source": "data_loader_unit_test.py", "target": "data_loader.py"}, {"confidence": "EXTRACTED", "relation": "resolved_imports", "source": "etl.py", "target": "data_navigation.py"}, {"confidence": "EXTRACTED", "relation": "resolved_imports", "source": "orquestador.py", "target": "data_navigation.py"}, {"confidence": "EXTRACTED", "relation": "resolved_imports", "source": "orquestador.py", "target": "etl.py"}, {"confidence": "EXTRACTED", "relation": "resolved_imports", "source": "orquestador.py", "target": "data_loader.py"}, {"confidence": "EXTRACTED", "relation": "resolved_imports", "source": "orquestador_unit_test.py", "target": "orquestador.py"}], "generator": "readmenator", "metadata": {"edge_count": 182, "file_count": 10, "language_count": 2, "symbol_count": 41}, "nodes": [{"id": "app.py", "kind": "module", "label": "app.py", "language": "py", "sha256": "57b21bdb023585b8", "symbol_count": 0, "symbols": []}, {"id": "app_unit_test.py", "kind": "module", "label": "app_unit_test.py", "language": "py", "sha256": "a53b2e8352768a02", "symbol_count": 5, "symbols": [{"kind": "class", "line": 7, "name": "TestApp", "signature": "class TestApp(TestCase)"}, {"kind": "method", "line": 9, "name": "test_index", "signature": "def test_index(self, mock_render_template)"}, {"kind": "method", "line": 23, "name": "test_create_config", "signature": "def test_create_config(self, mock_db, mock_User, mock_UserController, mock_url_for, mock_redirect)"}, {"kind": "method", "line": 40, "name": "test_start_etl", "signature": "def test_start_etl(self, mock_data_navigator, mock_ETLProcessor, mock_DataQualityChecker, mock_Transformer, mock_Config, mock_ETLController, mock_url_for, mock_redirect, mock_flash)"}, {"kind": "method", "line": 52, "name": "test_etl_status", "signature": "def test_etl_status(self, mock_current_user, mock_ProcessController, mock_render_template)"}]}, {"id": "data_loader.py", "kind": "module", "label": "data_loader.py", "language": "py", "sha256": "198920a9d8443560", "symbol_count": 0, "symbols": []}, {"id": "data_loader_unit_test.py", "kind": "module", "label": "data_loader_unit_test.py", "language": "py", "sha256": "938b49febd73d1fa", "symbol_count": 4, "symbols": [{"kind": "class", "line": 5, "name": "TestSourceLoader", "signature": "class TestSourceLoader(TestCase)"}, {"kind": "method", "line": 6, "name": "setUp", "signature": "def setUp(self)"}, {"kind": "method", "line": 33, "name": "test_load_ftp", "signature": "def test_load_ftp(self, mock_print)"}, {"kind": "method", "line": 38, "name": "test_load_mysql", "signature": "def test_load_mysql(self)"}]}, {"id": "data_navigation.py", "kind": "module", "label": "data_navigation.py", "language": "py", "sha256": "840da9a9ce00fe5e", "symbol_count": 4, "symbols": [{"kind": "class", "line": 3, "name": "DataNavigator", "signature": "class DataNavigator"}, {"kind": "method", "line": 4, "name": "__init__", "signature": "def __init__(self, db_name, collection_name)"}, {"kind": "method", "line": 9, "name": "find_by_dataset_tablename_date", "signature": "def find_by_dataset_tablename_date(self, dataset, tablename, date)"}, {"kind": "method", "line": 13, "name": "find_by_query", "signature": "def find_by_query(self, query)"}]}, {"id": "etl.py", "kind": "module", "label": "etl.py", "language": "py", "sha256": "bba603f86bf6bdea", "symbol_count": 18, "symbols": [{"kind": "class", "line": 11, "name": "Config", "signature": "class Config"}, {"kind": "class", "line": 22, "name": "Transformer", "signature": "class Transformer"}, {"kind": "class", "line": 31, "name": "DataQualityChecker", "signature": "class DataQualityChecker"}, {"kind": "class", "line": 39, "name": "ETLHandler", "signature": "class ETLHandler(FileSystemEventHandler)"}, {"kind": "class", "line": 65, "name": "ETLProcessor", "signature": "class ETLProcessor"}, {"kind": "class", "line": 92, "name": "ETLTests", "signature": "class ETLTests(TestCase)"}, {"kind": "method", "line": 12, "name": "__init__", "signature": "def __init__(self, config_path)"}, {"kind": "method", "line": 15, "name": "load", "signature": "def load(self, config_path)"}, {"kind": "method", "line": 19, "name": "get", "signature": "def get(self, key)"}, {"kind": "method", "line": 23, "name": "__init__", "signature": "def __init__(self, transformation_script)"}, {"kind": "method", "line": 26, "name": "apply", "signature": "def apply(self, df)"}, {"kind": "method", "line": 32, "name": "__init__", "signature": "def __init__(self, qa_script)"}, {"kind": "method", "line": 35, "name": "check", "signature": "def check(self, df)"}, {"kind": "method", "line": 40, "name": "__init__", "signature": "def __init__(self, config, transformer, quality_checker, collection, data_navigator)"}, {"kind": "method", "line": 47, "name": "on_created", "signature": "def on_created(self, event)"}, {"kind": "method", "line": 66, "name": "__init__", "signature": "def __init__(self, config, transformer, quality_checker, data_navigator)"}, {"kind": "method", "line": 72, "name": "process", "signature": "def process(self)"}, {"kind": "method", "line": 93, "name": "test_etl", "signature": "def test_etl(self)"}]}, {"id": "etl_unit_test.py", "kind": "module", "label": "etl_unit_test.py", "language": "py", "sha256": "fac7db27d5aa616d", "symbol_count": 7, "symbols": [{"kind": "class", "line": 4, "name": "TestETL", "signature": "class TestETL(TestCase)"}, {"kind": "class", "line": 27, "name": "TestETLProcessor", "signature": "class TestETLProcessor(TestCase)"}, {"kind": "method", "line": 5, "name": "setUp", "signature": "def setUp(self)"}, {"kind": "method", "line": 11, "name": "test_transformation", "signature": "def test_transformation(self)"}, {"kind": "method", "line": 18, "name": "test_quality_check", "signature": "def test_quality_check(self)"}, {"kind": "method", "line": 28, "name": "setUp", "signature": "def setUp(self)"}, {"kind": "method", "line": 35, "name": "test_etl_process", "signature": "def test_etl_process(self)"}]}, {"id": "install.sh", "kind": "module", "label": "install.sh", "language": "sh", "sha256": "c907d80fd6734993", "symbol_count": 0, "symbols": []}, {"id": "orquestador.py", "kind": "module", "label": "orquestador.py", "language": "py", "sha256": "114341ed34e17417", "symbol_count": 1, "symbols": [{"kind": "function", "line": 13, "name": "main", "signature": "def main()"}]}, {"id": "orquestador_unit_test.py", "kind": "module", "label": "orquestador_unit_test.py", "language": "py", "sha256": "bb274141df6915bc", "symbol_count": 2, "symbols": [{"kind": "class", "line": 5, "name": "TestScript", "signature": "class TestScript(TestCase)"}, {"kind": "method", "line": 8, "name": "test_main", "signature": "def test_main(self, mock_open, mock_print)"}]}], "type": "CodePropertyGraph", "version": "1.0"}
+{"@context": "https://schema.org", "analysis": {"communities": [{"cohesion": 1.0, "id": 0, "label": "root", "size": 2}, {"cohesion": 0.5, "id": 1, "label": "root", "size": 2}, {"cohesion": 0.8, "id": 2, "label": "root", "size": 4}], "god_nodes": [{"node_id": "orquestador.py", "score": 8.1}, {"node_id": "etl.py", "score": 5.8}, {"node_id": "data_navigation.py", "score": 4.4}, {"node_id": "data_loader.py", "score": 4.0}, {"node_id": "app_unit_test.py", "score": 2.5}, {"node_id": "data_loader_unit_test.py", "score": 2.4}, {"node_id": "orquestador_unit_test.py", "score": 2.2}, {"node_id": "app.py", "score": 2.0}, {"node_id": "etl_unit_test.py", "score": 0.7}, {"node_id": "install.sh", "score": 0.0}], "surprising_connections": [{"hops": 3, "source": "data_loader_unit_test.py", "target": "data_navigation.py"}, {"hops": 3, "source": "data_loader_unit_test.py", "target": "etl.py"}, {"hops": 3, "source": "data_loader_unit_test.py", "target": "orquestador_unit_test.py"}]}, "edges": [{"confidence": "EXTRACTED", "relation": "imports", "source": "app_unit_test.py", "target": "unittest"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "app_unit_test.py", "target": "unittest.mock"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "app_unit_test.py", "target": "flask"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "app_unit_test.py", "target": "flask_login"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "app_unit_test.py", "target": "app"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "data_loader_unit_test.py", "target": "unittest"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "data_loader_unit_test.py", "target": "unittest.mock"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "data_loader_unit_test.py", "target": "data_loader"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "data_navigation.py", "target": "pymongo"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "os"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "yaml"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "pandas"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "pymongo"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "logging"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "watchdog.observers"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "watchdog.events"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "datetime"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl.py", "target": "data_navigation"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl_unit_test.py", "target": "unittest"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "etl_unit_test.py", "target": "your_etl_script"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "os"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "yaml"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "pandas"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "paramiko"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "pymysql"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "logging"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "ftplib"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "datetime"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "data_navigation"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "etl"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador.py", "target": "data_loader"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador_unit_test.py", "target": "unittest"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador_unit_test.py", "target": "unittest.mock"}, {"confidence": "EXTRACTED", "relation": "imports", "source": "orquestador_unit_test.py", "target": "orquestador"}, {"confidence": "EXTRACTED", "relation": "resolved_imports", "source": "app_unit_test.py", "target": "app.py"}, {"confidence": "EXTRACTED", "relation": "resolved_imports", "source": "data_loader_unit_test.py", "target": "data_loader.py"}, {"confidence": "EXTRACTED", "relation": "resolved_imports", "source": "etl.py", "target": "data_navigation.py"}, {"confidence": "EXTRACTED", "relation": "resolved_imports", "source": "orquestador.py", "target": "data_navigation.py"}, {"confidence": "EXTRACTED", "relation": "resolved_imports", "source": "orquestador.py", "target": "etl.py"}, {"confidence": "EXTRACTED", "relation": "resolved_imports", "source": "orquestador.py", "target": "data_loader.py"}, {"confidence": "EXTRACTED", "relation": "resolved_imports", "source": "orquestador_unit_test.py", "target": "orquestador.py"}], "generator": "readmenator", "metadata": {"edge_count": 182, "file_count": 10, "language_count": 2, "symbol_count": 41}, "nodes": [{"id": "app.py", "kind": "module", "label": "app.py", "language": "py", "sha256": "57b21bdb023585b8", "symbol_count": 0, "symbols": []}, {"id": "app_unit_test.py", "kind": "module", "label": "app_unit_test.py", "language": "py", "sha256": "a53b2e8352768a02", "symbol_count": 5, "symbols": [{"kind": "class", "line": 7, "name": "TestApp", "signature": "class TestApp(TestCase)"}, {"kind": "method", "line": 9, "name": "test_index", "signature": "def test_index(self, mock_render_template)"}, {"kind": "method", "line": 23, "name": "test_create_config", "signature": "def test_create_config(self, mock_db, mock_User, mock_UserController, mock_url_for, mock_redirect)"}, {"kind": "method", "line": 40, "name": "test_start_etl", "signature": "def test_start_etl(self, mock_data_navigator, mock_ETLProcessor, mock_DataQualityChecker, mock_Transformer, mock_Config, mock_ETLController, mock_url_for, mock_redirect, mock_flash)"}, {"kind": "method", "line": 52, "name": "test_etl_status", "signature": "def test_etl_status(self, mock_current_user, mock_ProcessController, mock_render_template)"}]}, {"id": "data_loader.py", "kind": "module", "label": "data_loader.py", "language": "py", "sha256": "198920a9d8443560", "symbol_count": 0, "symbols": []}, {"id": "data_loader_unit_test.py", "kind": "module", "label": "data_loader_unit_test.py", "language": "py", "sha256": "938b49febd73d1fa", "symbol_count": 4, "symbols": [{"kind": "class", "line": 5, "name": "TestSourceLoader", "signature": "class TestSourceLoader(TestCase)"}, {"kind": "method", "line": 6, "name": "setUp", "signature": "def setUp(self)"}, {"kind": "method", "line": 33, "name": "test_load_ftp", "signature": "def test_load_ftp(self, mock_print)"}, {"kind": "method", "line": 38, "name": "test_load_mysql", "signature": "def test_load_mysql(self)"}]}, {"id": "data_navigation.py", "kind": "module", "label": "data_navigation.py", "language": "py", "sha256": "840da9a9ce00fe5e", "symbol_count": 4, "symbols": [{"kind": "class", "line": 3, "name": "DataNavigator", "signature": "class DataNavigator"}, {"kind": "method", "line": 4, "name": "__init__", "signature": "def __init__(self, db_name, collection_name)"}, {"kind": "method", "line": 9, "name": "find_by_dataset_tablename_date", "signature": "def find_by_dataset_tablename_date(self, dataset, tablename, date)"}, {"kind": "method", "line": 13, "name": "find_by_query", "signature": "def find_by_query(self, query)"}]}, {"id": "etl.py", "kind": "module", "label": "etl.py", "language": "py", "sha256": "bba603f86bf6bdea", "symbol_count": 18, "symbols": [{"kind": "class", "line": 11, "name": "Config", "signature": "class Config"}, {"kind": "class", "line": 22, "name": "Transformer", "signature": "class Transformer"}, {"kind": "class", "line": 31, "name": "DataQualityChecker", "signature": "class DataQualityChecker"}, {"kind": "class", "line": 39, "name": "ETLHandler", "signature": "class ETLHandler(FileSystemEventHandler)"}, {"kind": "class", "line": 65, "name": "ETLProcessor", "signature": "class ETLProcessor"}, {"kind": "class", "line": 92, "name": "ETLTests", "signature": "class ETLTests(TestCase)"}, {"kind": "method", "line": 12, "name": "__init__", "signature": "def __init__(self, config_path)"}, {"kind": "method", "line": 15, "name": "load", "signature": "def load(self, config_path)"}, {"kind": "method", "line": 19, "name": "get", "signature": "def get(self, key)"}, {"kind": "method", "line": 23, "name": "__init__", "signature": "def __init__(self, transformation_script)"}, {"kind": "method", "line": 26, "name": "apply", "signature": "def apply(self, df)"}, {"kind": "method", "line": 32, "name": "__init__", "signature": "def __init__(self, qa_script)"}, {"kind": "method", "line": 35, "name": "check", "signature": "def check(self, df)"}, {"kind": "method", "line": 40, "name": "__init__", "signature": "def __init__(self, config, transformer, quality_checker, collection, data_navigator)"}, {"kind": "method", "line": 47, "name": "on_created", "signature": "def on_created(self, event)"}, {"kind": "method", "line": 66, "name": "__init__", "signature": "def __init__(self, config, transformer, quality_checker, data_navigator)"}, {"kind": "method", "line": 72, "name": "process", "signature": "def process(self)"}, {"kind": "method", "line": 93, "name": "test_etl", "signature": "def test_etl(self)"}]}, {"id": "etl_unit_test.py", "kind": "module", "label": "etl_unit_test.py", "language": "py", "sha256": "fac7db27d5aa616d", "symbol_count": 7, "symbols": [{"kind": "class", "line": 4, "name": "TestETL", "signature": "class TestETL(TestCase)"}, {"kind": "class", "line": 27, "name": "TestETLProcessor", "signature": "class TestETLProcessor(TestCase)"}, {"kind": "method", "line": 5, "name": "setUp", "signature": "def setUp(self)"}, {"kind": "method", "line": 11, "name": "test_transformation", "signature": "def test_transformation(self)"}, {"kind": "method", "line": 18, "name": "test_quality_check", "signature": "def test_quality_check(self)"}, {"kind": "method", "line": 28, "name": "setUp", "signature": "def setUp(self)"}, {"kind": "method", "line": 35, "name": "test_etl_process", "signature": "def test_etl_process(self)"}]}, {"id": "install.sh", "kind": "module", "label": "install.sh", "language": "sh", "sha256": "c907d80fd6734993", "symbol_count": 0, "symbols": []}, {"id": "orquestador.py", "kind": "module", "label": "orquestador.py", "language": "py", "sha256": "114341ed34e17417", "symbol_count": 1, "symbols": [{"kind": "function", "line": 13, "name": "main", "signature": "def main()"}]}, {"id": "orquestador_unit_test.py", "kind": "module", "label": "orquestador_unit_test.py", "language": "py", "sha256": "bb274141df6915bc", "symbol_count": 2, "symbols": [{"kind": "class", "line": 5, "name": "TestScript", "signature": "class TestScript(TestCase)"}, {"kind": "method", "line": 8, "name": "test_main", "signature": "def test_main(self, mock_open, mock_print)"}]}], "type": "CodePropertyGraph", "version": "1.0"}
 ```
 
 ---
