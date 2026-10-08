@@ -1,0 +1,413 @@
+{
+  "concepts": [
+    {
+      "name": "data",
+      "files": [
+        "data_loader.py",
+        "data_loader_unit_test.py",
+        "data_navigation.py",
+        "etl.py"
+      ],
+      "mentions": 8,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "unit",
+      "files": [
+        "app_unit_test.py",
+        "data_loader_unit_test.py",
+        "etl_unit_test.py",
+        "orquestador_unit_test.py"
+      ],
+      "mentions": 8,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "etl",
+      "files": [
+        "app_unit_test.py",
+        "etl.py",
+        "etl_unit_test.py"
+      ],
+      "mentions": 9,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "app",
+      "files": [
+        "app.py",
+        "app_unit_test.py"
+      ],
+      "mentions": 5,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "loader",
+      "files": [
+        "data_loader.py",
+        "data_loader_unit_test.py"
+      ],
+      "mentions": 5,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "orquestador",
+      "files": [
+        "orquestador.py",
+        "orquestador_unit_test.py"
+      ],
+      "mentions": 4,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "load",
+      "files": [
+        "data_loader_unit_test.py",
+        "etl.py"
+      ],
+      "mentions": 3,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "set",
+      "files": [
+        "data_loader_unit_test.py",
+        "etl_unit_test.py"
+      ],
+      "mentions": 3,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "check",
+      "files": [
+        "etl.py",
+        "etl_unit_test.py"
+      ],
+      "mentions": 2,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "config",
+      "files": [
+        "app_unit_test.py",
+        "etl.py"
+      ],
+      "mentions": 2,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "etlprocessor",
+      "files": [
+        "etl.py",
+        "etl_unit_test.py"
+      ],
+      "mentions": 2,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "process",
+      "files": [
+        "etl.py",
+        "etl_unit_test.py"
+      ],
+      "mentions": 2,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "quality",
+      "files": [
+        "etl.py",
+        "etl_unit_test.py"
+      ],
+      "mentions": 2,
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "relations": [
+    {
+      "source": "orquestador",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 1.0,
+      "confidence": "INFERRED",
+      "evidence": [
+        "orquestador.py->data_loader.py",
+        "orquestador.py->data_navigation.py",
+        "orquestador.py->etl.py"
+      ]
+    },
+    {
+      "source": "load",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.67,
+      "confidence": "INFERRED",
+      "evidence": [
+        "data_loader_unit_test.py->data_loader.py",
+        "etl.py->data_navigation.py"
+      ]
+    },
+    {
+      "source": "check",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "etl.py->data_navigation.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "app",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "app_unit_test.py->app.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "etl.py->data_navigation.py"
+      ]
+    },
+    {
+      "source": "data",
+      "target": "loader",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "data_loader_unit_test.py->data_loader.py"
+      ]
+    },
+    {
+      "source": "etl",
+      "target": "app",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "app_unit_test.py->app.py"
+      ]
+    },
+    {
+      "source": "etl",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "etl.py->data_navigation.py"
+      ]
+    },
+    {
+      "source": "etlprocessor",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "etl.py->data_navigation.py"
+      ]
+    },
+    {
+      "source": "load",
+      "target": "loader",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "data_loader_unit_test.py->data_loader.py"
+      ]
+    },
+    {
+      "source": "loader",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "data_loader_unit_test.py->data_loader.py"
+      ]
+    },
+    {
+      "source": "orquestador",
+      "target": "check",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "orquestador.py->etl.py"
+      ]
+    },
+    {
+      "source": "orquestador",
+      "target": "config",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "orquestador.py->etl.py"
+      ]
+    },
+    {
+      "source": "orquestador",
+      "target": "etl",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "orquestador.py->etl.py"
+      ]
+    },
+    {
+      "source": "orquestador",
+      "target": "etlprocessor",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "orquestador.py->etl.py"
+      ]
+    },
+    {
+      "source": "orquestador",
+      "target": "load",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "orquestador.py->etl.py"
+      ]
+    },
+    {
+      "source": "orquestador",
+      "target": "loader",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "orquestador.py->data_loader.py"
+      ]
+    },
+    {
+      "source": "orquestador",
+      "target": "process",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "orquestador.py->etl.py"
+      ]
+    },
+    {
+      "source": "orquestador",
+      "target": "quality",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "orquestador.py->etl.py"
+      ]
+    },
+    {
+      "source": "process",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "etl.py->data_navigation.py"
+      ]
+    },
+    {
+      "source": "quality",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "etl.py->data_navigation.py"
+      ]
+    },
+    {
+      "source": "set",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "data_loader_unit_test.py->data_loader.py"
+      ]
+    },
+    {
+      "source": "set",
+      "target": "loader",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "data_loader_unit_test.py->data_loader.py"
+      ]
+    },
+    {
+      "source": "unit",
+      "target": "app",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "app_unit_test.py->app.py"
+      ]
+    },
+    {
+      "source": "unit",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "data_loader_unit_test.py->data_loader.py"
+      ]
+    },
+    {
+      "source": "unit",
+      "target": "loader",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "data_loader_unit_test.py->data_loader.py"
+      ]
+    },
+    {
+      "source": "unit",
+      "target": "orquestador",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "orquestador_unit_test.py->orquestador.py"
+      ]
+    }
+  ],
+  "dialectic": [
+    "Thesis: `check` centralizes 2 files; Antithesis: `etl` pulls 3 files with 2 shared (Jaccard 0.67); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `check` centralizes 2 files; Antithesis: `etlprocessor` pulls 2 files with 2 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `check` centralizes 2 files; Antithesis: `process` pulls 2 files with 2 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `check` centralizes 2 files; Antithesis: `quality` pulls 2 files with 2 shared (Jaccard 1.00); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `config` centralizes 2 files; Antithesis: `etl` pulls 3 files with 2 shared (Jaccard 0.67); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `data` centralizes 4 files; Antithesis: `load` pulls 2 files with 2 shared (Jaccard 0.50); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?",
+    "Thesis: `data` centralizes 4 files; Antithesis: `loader` pulls 2 files with 2 shared (Jaccard 0.50); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?",
+    "Thesis: `etl` centralizes 3 files; Antithesis: `etlprocessor` pulls 2 files with 2 shared (Jaccard 0.67); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `etl` centralizes 3 files; Antithesis: `process` pulls 2 files with 2 shared (Jaccard 0.67); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `etl` centralizes 3 files; Antithesis: `quality` pulls 2 files with 2 shared (Jaccard 0.67); Synthesis: should they merge, split by layer, or keep `bridges` explicit?"
+  ]
+}

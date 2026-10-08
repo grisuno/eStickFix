@@ -1,0 +1,26 @@
+[
+  {
+    "community_a": 0,
+    "community_b": 1,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language py) with no import path between community 0 (root: etl) and community 1 (root: app).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 2,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language py) with no import path between community 0 (root: etl) and community 2 (orphans).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 2,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language py and layer testing) with no import path between community 1 (root: app) and community 2 (orphans).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  }
+]
